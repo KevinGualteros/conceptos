@@ -4272,18 +4272,780 @@ traceroute ejemplo.com</code></pre>
                 </section>
             </section>
 
-            <!-- HTML y CSS -->
-            <section class="page-view" id="view-html-css" data-view="html-css"
-                aria-labelledby="html-css-title" hidden>
-                <header class="page-header">
-                    <span class="eyebrow">FRONTEND</span>
-                    <h1 id="html-css-title">HTML y CSS</h1>
-                    <p class="page-description">
-                        Estructura semántica de documentos web,
-                        estilos, diseño adaptable y accesibilidad.
-                    </p>
-                </header>
-            </section>
+<section class="page-view" id="view-html-css" data-view="html-css"
+    aria-labelledby="html-css-title" hidden>
+
+    <nav class="breadcrumbs" aria-label="Ruta de navegación">
+        <a href="#view-home" data-page="home">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <a href="#view-fullstack" data-page="fullstack">Desarrollo Full Stack</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">HTML y CSS</span>
+    </nav>
+
+    <header class="page-header">
+        <span class="eyebrow">FRONTEND · FUNDAMENTOS WEB</span>
+        <h1 id="html-css-title">HTML y CSS</h1>
+        <p class="page-description">
+            HTML define la estructura y el significado del contenido de una página;
+            CSS controla su presentación, distribución y adaptación a distintos
+            dispositivos. Esta ficha reúne los fundamentos, patrones habituales,
+            ejemplos listos para probar y preguntas típicas de entrevistas frontend.
+        </p>
+        <div class="content-tags" aria-label="Temas cubiertos">
+            <span class="content-tag">HTML semántico</span>
+            <span class="content-tag">CSS moderno</span>
+            <span class="content-tag">Responsive design</span>
+            <span class="content-tag">Accesibilidad</span>
+            <span class="content-tag">Entrevistas</span>
+        </div>
+    </header>
+
+    <section class="content-section" aria-labelledby="html-css-map-title">
+        <h2 id="html-css-map-title">Mapa de la sección</h2>
+        <p>Entra directamente al bloque que quieras estudiar. Cada apartado puede ampliarse sin cambiar la estructura general de la guía.</p>
+        <div class="link-list">
+            <a href="#html-structure">Estructura HTML</a>
+            <a href="#html-semantic">Semántica</a>
+            <a href="#html-forms">Formularios</a>
+            <a href="#css-basics">Fundamentos CSS</a>
+            <a href="#css-layout">Flexbox y Grid</a>
+            <a href="#css-responsive">Responsive design</a>
+            <a href="#html-css-errors">Errores frecuentes</a>
+            <a href="#html-css-faq">Preguntas de entrevista</a>
+        </div>
+    </section>
+
+    <section class="content-section" id="html-structure" aria-labelledby="html-structure-title">
+        <h2 id="html-structure-title">01. Estructura de un documento HTML</h2>
+        <p>HTML (HyperText Markup Language) utiliza elementos y atributos para representar títulos, párrafos, enlaces, imágenes, formularios y otras partes del contenido. El navegador interpreta el documento y construye el DOM.</p>
+
+        <div class="topic-accordion-list">
+            <details class="content-accordion">
+                <summary>Plantilla mínima y función de cada parte</summary>
+                <div class="accordion-content">
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="description" content="Descripción de la página"&gt;
+    &lt;title&gt;Mi página&lt;/title&gt;
+    &lt;link rel="stylesheet" href="./style.css"&gt;
+    &lt;script src="./script.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Título principal&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;p&gt;Contenido principal de la página.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <ul>
+                        <li><strong><code>&lt;!DOCTYPE html&gt;</code>:</strong> activa el modo estándar de renderizado.</li>
+                        <li><strong><code>&lt;html lang="es"&gt;</code>:</strong> declara el idioma principal del documento.</li>
+                        <li><strong><code>&lt;head&gt;</code>:</strong> contiene metadatos, título, referencias a estilos y recursos.</li>
+                        <li><strong><code>charset</code>:</strong> define la codificación de caracteres, normalmente UTF-8.</li>
+                        <li><strong><code>viewport</code>:</strong> ayuda a adaptar el ancho del documento a la pantalla del dispositivo.</li>
+                        <li><strong><code>defer</code>:</strong> permite descargar el JavaScript en paralelo y ejecutarlo después de analizar el HTML.</li>
+                        <li><strong><code>&lt;main&gt;</code>:</strong> agrupa el contenido principal de la página.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Elementos, etiquetas, atributos y anidamiento</summary>
+                <div class="accordion-content">
+                    <p>Una etiqueta es la marca escrita entre los signos angulares; un elemento incluye la etiqueta, su contenido y, cuando corresponda, la etiqueta de cierre. Los atributos añaden información o configuración al elemento.</p>
+                    <pre><code>&lt;a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer"&gt;
+    Consultar documentación
+&lt;/a&gt;</code></pre>
+                    <p><code>href</code>, <code>target</code> y <code>rel</code> son atributos. Los elementos deben anidarse correctamente; no se debe cerrar un elemento fuera del orden en el que se abrió.</p>
+                    <p><strong>Consejo:</strong> utiliza nombres de atributos entre comillas y evita atributos obsoletos de presentación, como <code>align</code>. La presentación corresponde a CSS.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Títulos, párrafos, listas y enlaces</summary>
+                <div class="accordion-content">
+                    <pre><code>&lt;h1&gt;Tema principal&lt;/h1&gt;
+&lt;h2&gt;Subtema&lt;/h2&gt;
+&lt;p&gt;Un párrafo explicativo.&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;Elemento sin orden numérico&lt;/li&gt;
+    &lt;li&gt;Otro elemento&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Primer paso&lt;/li&gt;
+    &lt;li&gt;Segundo paso&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;a href="/contacto/"&gt;Ir a contacto&lt;/a&gt;</code></pre>
+                    <p>Usa los encabezados en una jerarquía lógica para organizar el contenido. No elijas <code>h2</code> o <code>h3</code> únicamente porque su tamaño visual te gusta: los tamaños se controlan con CSS.</p>
+                    <p>Para enlaces que abren otra pestaña con <code>target="_blank"</code>, utiliza <code>rel="noopener noreferrer"</code>. El texto del enlace debe explicar el destino siempre que sea posible.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Imágenes, audio, vídeo y rutas de recursos</summary>
+                <div class="accordion-content">
+                    <pre><code>&lt;img
+    src="./img/diagrama-red.png"
+    alt="Diagrama de una red con tres subredes"
+    width="960"
+    height="540"
+&gt;
+
+&lt;video controls width="720" poster="./img/portada.jpg"&gt;
+    &lt;source src="./media/demo.mp4" type="video/mp4"&gt;
+    Tu navegador no admite este vídeo.
+&lt;/video&gt;</code></pre>
+                    <p>El texto alternativo (<code>alt</code>) debe describir la información relevante de la imagen. Si la imagen es puramente decorativa, utiliza <code>alt=""</code>. Evita textos alternativos como “imagen de” cuando no aportan información.</p>
+                    <p>En GitHub Pages, revisa rutas relativas y mayúsculas/minúsculas: una ruta que funciona localmente en Windows puede fallar en el servidor si el nombre no coincide exactamente.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="content-section" id="html-semantic" aria-labelledby="html-semantic-title">
+        <h2 id="html-semantic-title">02. HTML semántico y accesibilidad</h2>
+        <p>La semántica comunica el propósito de cada región del documento a navegadores, tecnologías de asistencia, motores de búsqueda y otros desarrolladores. Un HTML semántico suele ser más fácil de mantener que una página formada solo por contenedores genéricos.</p>
+
+        <div class="topic-accordion-list">
+            <details class="content-accordion">
+                <summary>Cuándo usar header, nav, main, section, article, aside y footer</summary>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong><code>header</code>:</strong> cabecera de una página o de una sección.</li>
+                        <li><strong><code>nav</code>:</strong> bloque de navegación principal o secundaria.</li>
+                        <li><strong><code>main</code>:</strong> contenido principal único de la página.</li>
+                        <li><strong><code>section</code>:</strong> agrupación temática de contenido, normalmente con encabezado.</li>
+                        <li><strong><code>article</code>:</strong> contenido independiente o reutilizable, como una publicación o una ficha autónoma.</li>
+                        <li><strong><code>aside</code>:</strong> contenido complementario al contenido principal.</li>
+                        <li><strong><code>footer</code>:</strong> información de cierre de una página o sección.</li>
+                        <li><strong><code>div</code>:</strong> contenedor genérico cuando no existe un elemento semántico más apropiado.</li>
+                    </ul>
+                    <pre><code>&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;nav aria-label="Principal"&gt;...&lt;/nav&gt;
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h1&gt;Título del artículo&lt;/h1&gt;
+            &lt;section&gt;
+                &lt;h2&gt;Primer apartado&lt;/h2&gt;
+                &lt;p&gt;Contenido...&lt;/p&gt;
+            &lt;/section&gt;
+        &lt;/article&gt;
+        &lt;aside&gt;Contenido relacionado&lt;/aside&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Etiquetas y atributos útiles para accesibilidad</summary>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Asocia cada campo de formulario con un <code>&lt;label&gt;</code> mediante <code>for</code> e <code>id</code>.</li>
+                        <li>Usa el atributo <code>alt</code> de acuerdo con el propósito de cada imagen.</li>
+                        <li>Asegura un orden lógico de encabezados y una estructura navegable.</li>
+                        <li>Haz que los controles interactivos funcionen con teclado y mantén visible el foco.</li>
+                        <li>Usa nombres accesibles para iconos y controles sin texto visible.</li>
+                        <li>Elige contraste suficiente entre texto y fondo; no dependas solamente del color para comunicar un estado.</li>
+                    </ul>
+                    <pre><code>&lt;label for="correo"&gt;Correo electrónico&lt;/label&gt;
+&lt;input id="correo" name="correo" type="email" autocomplete="email" required&gt;
+
+&lt;button type="button" aria-label="Cerrar menú"&gt;
+    &lt;span aria-hidden="true"&gt;×&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                    <p>ARIA complementa la semántica nativa cuando hace falta; no sustituye un elemento HTML correcto. Un botón real suele ser preferible a un <code>div</code> con un evento de clic.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>DOM, atributos id y class</summary>
+                <div class="accordion-content">
+                    <p>El DOM (Document Object Model) representa el documento como un árbol que JavaScript puede consultar y modificar. El atributo <code>id</code> identifica un elemento concreto dentro del documento; <code>class</code> permite agrupar elementos para aplicar estilos o comportamiento compartido.</p>
+                    <pre><code>&lt;section id="servicios" class="panel panel-cloud"&gt;
+    &lt;h2 class="panel-title"&gt;Servicios cloud&lt;/h2&gt;
+&lt;/section&gt;</code></pre>
+                    <p><strong>Buenas prácticas:</strong> mantén los <code>id</code> únicos, utiliza nombres de clase descriptivos y no uses identificadores duplicados para intentar aplicar el mismo estilo a varios elementos.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="content-section" id="html-forms" aria-labelledby="html-forms-title">
+        <h2 id="html-forms-title">03. Formularios y datos de entrada</h2>
+        <p>Los formularios permiten recoger información y enviarla al destino configurado. HTML ofrece controles nativos y validación básica en el navegador; la validación del cliente mejora la experiencia, pero el servidor debe validar de nuevo los datos.</p>
+
+        <div class="topic-accordion-list">
+            <details class="content-accordion">
+                <summary>Tipos de input y atributos habituales</summary>
+                <div class="accordion-content">
+                    <pre><code>&lt;form action="/registro" method="post"&gt;
+    &lt;label for="nombre"&gt;Nombre&lt;/label&gt;
+    &lt;input id="nombre" name="nombre" type="text" required minlength="2"&gt;
+
+    &lt;label for="email"&gt;Correo&lt;/label&gt;
+    &lt;input id="email" name="email" type="email" required autocomplete="email"&gt;
+
+    &lt;label for="nivel"&gt;Nivel&lt;/label&gt;
+    &lt;select id="nivel" name="nivel"&gt;
+        &lt;option value="junior"&gt;Junior&lt;/option&gt;
+        &lt;option value="intermedio"&gt;Intermedio&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                    <ul>
+                        <li><strong><code>text</code>:</strong> texto general.</li>
+                        <li><strong><code>email</code>:</strong> entrada con comprobación básica del formato.</li>
+                        <li><strong><code>password</code>:</strong> entrada cuyo texto normalmente se oculta visualmente.</li>
+                        <li><strong><code>number</code>:</strong> valor numérico con posibles límites <code>min</code>, <code>max</code> y <code>step</code>.</li>
+                        <li><strong><code>checkbox</code> y <code>radio</code>:</strong> selecciones múltiples o mutuamente excluyentes, según la configuración.</li>
+                        <li><strong><code>required</code>, <code>minlength</code>, <code>maxlength</code>, <code>pattern</code>:</strong> atributos de validación nativa.</li>
+                        <li><strong><code>name</code>:</strong> nombre con el que se identifica el campo al enviar el formulario.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Diferencia entre GET y POST en formularios</summary>
+                <div class="accordion-content">
+                    <p><strong>GET</strong> se utiliza habitualmente para consultas que no deberían modificar el estado del servidor. Los parámetros suelen aparecer en la URL y pueden guardarse como marcadores o compartirse.</p>
+                    <p><strong>POST</strong> se utiliza para enviar datos al servidor para su procesamiento. No es cifrado por sí mismo: HTTPS protege la comunicación en tránsito. Tampoco debe asumirse que POST garantiza la privacidad o evita duplicados automáticamente.</p>
+                    <p>Un formulario HTML estático no procesa datos por sí solo. Para almacenar información, autenticar usuarios o hacer operaciones sensibles se necesita un backend o un servicio apropiado.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="content-section" id="css-basics" aria-labelledby="css-basics-title">
+        <h2 id="css-basics-title">04. Fundamentos de CSS</h2>
+        <p>CSS (Cascading Style Sheets) describe la presentación de los elementos HTML. Se organiza mediante reglas compuestas por un selector y un bloque de declaraciones.</p>
+
+        <div class="topic-accordion-list">
+            <details class="content-accordion">
+                <summary>Sintaxis, selectores y combinadores</summary>
+                <div class="accordion-content">
+                    <pre><code>/* Selector de tipo */
+p { color: #334155; }
+
+/* Selector de clase */
+.card { padding: 1rem; }
+
+/* Selector de identificador */
+#main-content { max-width: 70rem; }
+
+/* Descendiente */
+.card p { line-height: 1.7; }
+
+/* Hijo directo */
+.menu &gt; li { list-style: none; }
+
+/* Estado interactivo */
+a:hover { text-decoration: underline; }
+
+/* Múltiples selectores */
+h1, h2, h3 { line-height: 1.2; }</code></pre>
+                    <p>Los selectores de clase son una opción reutilizable habitual. Reserva los selectores por identificador para casos en los que realmente necesitas ese grado de especificidad o para relaciones con JavaScript.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Cascada, herencia y especificidad</summary>
+                <div class="accordion-content">
+                    <p>Cuando varias reglas coinciden con un elemento, CSS resuelve el resultado según la cascada: origen e importancia de la regla, capas de cascada cuando existen, especificidad y orden de aparición, entre otros criterios aplicables.</p>
+                    <p>La <strong>especificidad</strong> compara el peso de los selectores. En términos generales, un selector con identificador tiene más especificidad que uno con clase, y uno con clase más que uno de tipo. La herencia permite que algunas propiedades, como <code>color</code> y <code>font-family</code>, pasen de un elemento antecesor a sus descendientes.</p>
+                    <pre><code>/* Menos específico */
+p { color: #475569; }
+
+/* Más específico */
+.article p { color: #0f172a; }
+
+/* Evita depender de !important para resolver cada conflicto */</code></pre>
+                    <p><strong>Regla práctica:</strong> evita cadenas de selectores innecesariamente largas y el uso rutinario de <code>!important</code>. Una estructura consistente hace más fácil mantener el CSS.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Box model: content, padding, border y margin</summary>
+                <div class="accordion-content">
+                    <p>El modelo de caja determina cuánto espacio ocupa un elemento. Con <code>content-box</code>, el ancho se aplica al contenido y el padding y el borde se suman al tamaño exterior. Con <code>border-box</code>, el ancho incluye contenido, padding y borde.</p>
+                    <pre><code>*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.card {
+    width: 100%;
+    max-width: 30rem;
+    padding: 1.25rem;
+    border: 1px solid #e2e8f0;
+    margin-inline: auto;
+}</code></pre>
+                    <p>El margen crea espacio externo; el padding crea espacio entre el contenido y el borde. El margen puede colapsar verticalmente en determinados contextos de bloque, por lo que no siempre se suman como se esperaría.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Unidades: px, rem, em, %, vw y vh</summary>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong><code>px</code>:</strong> unidad CSS absoluta de referencia; útil para bordes finos y detalles pequeños.</li>
+                        <li><strong><code>rem</code>:</strong> relativo al tamaño de fuente del elemento raíz; útil para tipografía y espaciado consistente.</li>
+                        <li><strong><code>em</code>:</strong> relativo al tamaño de fuente del contexto que corresponda a la propiedad.</li>
+                        <li><strong><code>%</code>:</strong> relativo al contexto definido por la propiedad y el elemento contenedor.</li>
+                        <li><strong><code>vw</code> y <code>vh</code>:</strong> unidades relacionadas con el viewport; para alturas móviles, revisa también <code>dvh</code> cuando proceda.</li>
+                        <li><strong><code>fr</code>:</strong> fracción del espacio disponible en CSS Grid.</li>
+                    </ul>
+                    <pre><code>:root { font-size: 16px; }
+
+.page-title { font-size: clamp(1.8rem, 4vw, 3rem); }
+.container { width: min(100% - 2rem, 70rem); margin-inline: auto; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }</code></pre>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Variables personalizadas y organización del CSS</summary>
+                <div class="accordion-content">
+                    <p>Las propiedades personalizadas permiten reutilizar valores y centralizar decisiones visuales, como colores, tamaños, sombras y radios de borde.</p>
+                    <pre><code>:root {
+    --color-primary: #0284c7;
+    --color-text: #172033;
+    --color-border: #e2e8f0;
+    --radius-card: 0.75rem;
+    --space-md: 1rem;
+}
+
+.card {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    color: var(--color-text);
+}
+
+.button-primary {
+    background: var(--color-primary);
+}</code></pre>
+                    <p>Organiza los estilos por componentes o áreas, mantiene una convención de nombres y evita duplicar declaraciones que representan el mismo patrón visual.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="content-section" id="css-layout" aria-labelledby="css-layout-title">
+        <h2 id="css-layout-title">05. Distribución: display, Flexbox y Grid</h2>
+        <p>Las herramientas de layout permiten distribuir contenido según el eje principal, el eje transversal o una cuadrícula de filas y columnas. Elegir la técnica adecuada evita recurrir a márgenes artificiales y posicionamiento absoluto para organizar toda la interfaz.</p>
+
+        <div class="topic-accordion-list">
+            <details class="content-accordion">
+                <summary>Block, inline, inline-block y none</summary>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong><code>block</code>:</strong> normalmente comienza en una nueva línea y ocupa el ancho disponible del contenedor.</li>
+                        <li><strong><code>inline</code>:</strong> participa en el flujo de texto; ancho y alto no se comportan como en un bloque tradicional.</li>
+                        <li><strong><code>inline-block</code>:</strong> fluye con el texto, pero admite dimensiones de caja.</li>
+                        <li><strong><code>none</code>:</strong> elimina el elemento del flujo de layout y no lo muestra visualmente.</li>
+                        <li><strong><code>flex</code> y <code>grid</code>:</strong> activan modelos de distribución flexibles y bidimensionales.</li>
+                    </ul>
+                    <p>El atributo HTML <code>hidden</code> también representa que un elemento no está actualmente disponible para mostrarse. Esta guía utiliza una regla CSS explícita para garantizar que las vistas ocultas no se rendericen.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Flexbox: distribuir elementos en un eje</summary>
+                <div class="accordion-content">
+                    <p>Flexbox resulta apropiado para alinear elementos en una fila o columna, distribuir espacio disponible y gestionar el crecimiento o la contracción de los elementos.</p>
+                    <pre><code>.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (max-width: 40rem) {
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}</code></pre>
+                    <p><strong>Propiedades del contenedor:</strong> <code>display</code>, <code>flex-direction</code>, <code>justify-content</code>, <code>align-items</code>, <code>flex-wrap</code> y <code>gap</code>.</p>
+                    <p><strong>Propiedades de los elementos:</strong> <code>flex</code>, <code>flex-grow</code>, <code>flex-shrink</code>, <code>flex-basis</code> y <code>align-self</code>.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>CSS Grid: filas, columnas y tarjetas</summary>
+                <div class="accordion-content">
+                    <p>Grid está pensado para distribuir elementos en dos dimensiones. Es útil para galerías, paneles, dashboards y diseños con columnas que se adaptan al ancho disponible.</p>
+                    <pre><code>.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .cards {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}</code></pre>
+                    <p><code>minmax(0, 1fr)</code> ayuda a evitar que contenido largo fuerce la columna a ser más ancha de lo previsto. También son útiles <code>grid-template-areas</code>, <code>auto-fit</code>, <code>auto-fill</code> y <code>minmax()</code>.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Position, z-index y stacking context</summary>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong><code>static</code>:</strong> posición normal por defecto.</li>
+                        <li><strong><code>relative</code>:</strong> mantiene su espacio normal y permite desplazar el elemento; también puede actuar como referencia para descendientes absolutos.</li>
+                        <li><strong><code>absolute</code>:</strong> se posiciona respecto de su bloque contenedor de posicionamiento y sale del flujo normal.</li>
+                        <li><strong><code>fixed</code>:</strong> suele posicionarse respecto al viewport y permanece en esa ubicación al desplazarse.</li>
+                        <li><strong><code>sticky</code>:</strong> combina el comportamiento normal con un umbral de fijación dentro de su contenedor de desplazamiento.</li>
+                    </ul>
+                    <p><code>z-index</code> no es una solución universal: los contextos de apilamiento pueden hacer que un valor elevado no supere a un elemento de otro contexto. Revisa también propiedades como <code>transform</code>, <code>opacity</code> y el contexto de posicionamiento.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="content-section" id="css-responsive" aria-labelledby="css-responsive-title">
+        <h2 id="css-responsive-title">06. Responsive design y estilos modernos</h2>
+        <p>Un diseño adaptable reorganiza el contenido según el espacio disponible, sin asumir un único tamaño de pantalla. Los puntos de ruptura deben responder al diseño y al contenido, no únicamente a modelos concretos de dispositivos.</p>
+
+        <div class="topic-accordion-list">
+            <details class="content-accordion">
+                <summary>Media queries y enfoque mobile-first</summary>
+                <div class="accordion-content">
+                    <pre><code>/* Estilos base: pantallas pequeñas */
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+}
+
+/* Añade columnas cuando el contenido tiene espacio */
+@media (min-width: 48rem) {
+    .layout {
+        grid-template-columns: 16rem minmax(0, 1fr);
+    }
+}
+
+/* Preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}</code></pre>
+                    <p>Mobile-first significa diseñar primero los estilos base para pantallas estrechas y ampliar el layout mediante media queries cuando sea necesario. No implica que todos los sitios deban tener exactamente los mismos puntos de ruptura.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Imágenes, tipografía y contenido adaptable</summary>
+                <div class="accordion-content">
+                    <pre><code>img, video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.page-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.1;
+}
+
+.article {
+    width: min(100% - 2rem, 72rem);
+    margin-inline: auto;
+}
+
+.long-text {
+    overflow-wrap: anywhere;
+}</code></pre>
+                    <p><code>clamp()</code> define un mínimo, un valor flexible y un máximo. Aun con un diseño fluido, verifica que las líneas no sean excesivamente largas, que los controles sigan siendo utilizables y que los textos amplíen sin recortes.</p>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Estados interactivos y controles accesibles</summary>
+                <div class="accordion-content">
+                    <pre><code>.button {
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    padding: 0.65rem 1rem;
+    cursor: pointer;
+}
+
+.button:hover {
+    filter: brightness(0.96);
+}
+
+.button:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 3px;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}</code></pre>
+                    <p>No elimines el indicador de foco sin ofrecer una alternativa visible. Comprueba también contraste, tamaños de objetivo táctil, contenido en estados hover/focus y comportamiento con teclado.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="html-css-practice-title">
+        <h2 id="html-css-practice-title">07. Ejemplo práctico: tarjeta adaptable</h2>
+        <p>Este ejemplo reúne estructura semántica, una clase reutilizable y layout adaptable. Puedes colocarlo en un archivo HTML de prueba y abrirlo en el navegador.</p>
+
+        <div class="topic-accordion-list">
+            <details class="content-accordion">
+                <summary>HTML de la tarjeta</summary>
+                <div class="accordion-content">
+                    <pre><code>&lt;article class="service-card"&gt;
+    &lt;p class="service-card__category"&gt;CLOUD&lt;/p&gt;
+    &lt;h2 class="service-card__title"&gt;Amazon EC2&lt;/h2&gt;
+    &lt;p class="service-card__description"&gt;
+        Capacidad de cómputo virtual para ejecutar aplicaciones.
+    &lt;/p&gt;
+    &lt;a class="service-card__link" href="https://docs.aws.amazon.com/ec2/"&gt;
+        Consultar documentación
+    &lt;/a&gt;
+&lt;/article&gt;</code></pre>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>CSS de la tarjeta</summary>
+                <div class="accordion-content">
+                    <pre><code>.service-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    min-width: 0;
+    padding: 1.25rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.9rem;
+    background: #fff;
+    box-shadow: 0 2px 8px rgb(15 23 42 / 5%);
+}
+
+.service-card__category {
+    margin: 0;
+    color: #0284c7;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.service-card__title {
+    margin: 0;
+    color: #0f172a;
+    font-size: 1.2rem;
+}
+
+.service-card__description {
+    margin: 0;
+    color: #475569;
+    line-height: 1.7;
+}
+
+.service-card__link {
+    align-self: flex-start;
+    margin-top: auto;
+    color: #0369a1;
+    font-weight: 700;
+}
+
+.service-card__link:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 3px;
+}</code></pre>
+                </div>
+            </details>
+
+            <details class="content-accordion">
+                <summary>Checklist para revisar la página</summary>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Existe un título principal que describe la página.</li>
+                        <li>La estructura utiliza elementos semánticos apropiados.</li>
+                        <li>Los enlaces tienen destinos válidos y texto comprensible.</li>
+                        <li>Los estilos no dependen de un único ancho de pantalla.</li>
+                        <li>Los elementos interactivos se pueden operar con teclado.</li>
+                        <li>El contenido no genera scroll horizontal accidental.</li>
+                        <li>Las imágenes tienen dimensiones adecuadas y texto alternativo cuando lo necesitan.</li>
+                        <li>Los errores se revisan en las herramientas de desarrollo del navegador.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="content-section" id="html-css-errors" aria-labelledby="html-css-errors-title">
+        <h2 id="html-css-errors-title">08. Errores frecuentes y cómo diagnosticarlos</h2>
+        <div class="topic-accordion-list">
+            <details class="content-accordion">
+                <summary>El CSS no se aplica</summary>
+                <div class="accordion-content">
+                    <p><strong>Revisa:</strong> la ruta del archivo en <code>&lt;link rel="stylesheet" href="..."&gt;</code>, el nombre exacto del archivo, la pestaña Network del navegador y los errores de carga. Comprueba también que el selector coincide con el HTML y que otra regla no lo sobrescribe.</p>
+                </div>
+            </details>
+            <details class="content-accordion">
+                <summary>El diseño se desborda horizontalmente</summary>
+                <div class="accordion-content">
+                    <p><strong>Causas comunes:</strong> anchos rígidos, elementos flex que no pueden encogerse, cadenas largas, imágenes grandes o columnas de Grid sin un mínimo flexible.</p>
+                    <p><strong>Soluciones a evaluar:</strong> <code>max-width: 100%</code>, <code>min-width: 0</code>, <code>minmax(0, 1fr)</code> y <code>overflow-wrap: anywhere</code>. Evita esconder todo el desbordamiento con <code>overflow-x: hidden</code> sin localizar primero su causa.</p>
+                </div>
+            </details>
+            <details class="content-accordion">
+                <summary>Un elemento con z-index sigue quedando detrás</summary>
+                <div class="accordion-content">
+                    <p>Inspecciona los contextos de apilamiento y los ancestros del elemento. Un valor de <code>z-index</code> muy alto no puede necesariamente superar otro contexto que lo contiene. Comprueba además el posicionamiento y propiedades como <code>transform</code> y <code>opacity</code>.</p>
+                </div>
+            </details>
+            <details class="content-accordion">
+                <summary>El formulario parece válido pero recibe datos incorrectos</summary>
+                <div class="accordion-content">
+                    <p>La validación del navegador no es una frontera de seguridad. Valida los datos en el servidor, aplica las reglas de negocio, gestiona los errores y verifica permisos antes de operar con la información recibida.</p>
+                </div>
+            </details>
+            <details class="content-accordion">
+                <summary>Funciona localmente pero falla en GitHub Pages</summary>
+                <div class="accordion-content">
+                    <p>Verifica las rutas relativas, el nombre exacto de cada archivo, las mayúsculas y minúsculas, que los recursos se hayan subido al repositorio y que la página esté configurada para desplegar desde la rama o carpeta correcta. Revisa la consola y Network para localizar errores 404.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="content-section" id="html-css-faq" aria-labelledby="html-css-faq-title">
+        <h2 id="html-css-faq-title">09. Preguntas de entrevista: HTML y CSS</h2>
+        <p>Practica cómo aplicar estos conceptos en situaciones reales. Las respuestas complementan cada tema con criterios de decisión y diagnóstico.</p>
+        <div class="topic-accordion-list">
+            <details class="faq-accordion">
+                <summary>¿Cuándo elegirías article, section o div?</summary>
+                <div class="accordion-content">
+                    <p>Elegiría <code>article</code> para una unidad que tenga sentido por sí sola; <code>section</code> para agrupar contenido relacionado bajo un tema, normalmente con encabezado; y <code>div</code> cuando solo necesito un contenedor sin significado semántico. La decisión depende del propósito del contenido, no de cómo se verá.</p>
+                </div>
+            </details>
+            <details class="faq-accordion">
+                <summary>Un formulario acepta un correo en el navegador: ¿ya es seguro procesarlo?</summary>
+                <div class="accordion-content">
+                    <p>No. La validación del navegador mejora la experiencia, pero puede omitirse o modificarse. El servidor debe validar el formato y las reglas del negocio, comprobar autorización y manejar los datos de forma segura antes de procesarlos.</p>
+                </div>
+            </details>
+            <details class="faq-accordion">
+                <summary>¿Cómo investigarías un desbordamiento horizontal que solo aparece en móvil?</summary>
+                <div class="accordion-content">
+                    <p>Reduciría el viewport en DevTools y localizaría el elemento que supera el contenedor. Revisaría anchos mínimos, contenido largo, imágenes y columnas de Grid o Flexbox; después corregiría la causa, por ejemplo con <code>min-width: 0</code> o <code>minmax(0, 1fr)</code>, en lugar de ocultar el desbordamiento globalmente.</p>
+                </div>
+            </details>
+            <details class="faq-accordion">
+                <summary>Una regla CSS existe, pero no cambia el elemento: ¿qué comprobarías?</summary>
+                <div class="accordion-content">
+                    <p>Comprobaría en DevTools que la hoja se cargó, que el selector coincide y que la declaración no está anulada. También revisaría errores de sintaxis, especificidad, orden de las reglas y si la propiedad aplica a ese tipo de elemento.</p>
+                </div>
+            </details>
+            <details class="faq-accordion">
+                <summary>¿Cómo harías adaptable una cuadrícula de tarjetas?</summary>
+                <div class="accordion-content">
+                    <p>Empezaría con una columna y añadiría columnas cuando el contenido tenga espacio suficiente. Usaría Grid con columnas flexibles y mínimos razonables, y verificaría el resultado con texto largo, zoom y varios anchos; no elegiría los puntos de ruptura solo por modelos de dispositivos.</p>
+                </div>
+            </details>
+            <details class="faq-accordion">
+                <summary>¿Cómo permitirías que una persona que usa teclado encuentre y active todos los controles?</summary>
+                <div class="accordion-content">
+                    <p>Usaría elementos nativos con nombres accesibles, mantendría un orden de foco lógico y un indicador de foco visible, y evitaría interacciones disponibles solo mediante <code>hover</code>. Probaría la navegación completa con teclado, incluidos formularios, menús y mensajes de error.</p>
+                </div>
+            </details>
+            <details class="faq-accordion">
+                <summary>¿Qué revisarías antes de abrir un enlace en una pestaña nueva?</summary>
+                <div class="accordion-content">
+                    <p>Confirmaría que abrir una pestaña nueva es útil para la persona y avisaría de ese comportamiento cuando no sea evidente. En el enlace usaría <code>target="_blank"</code> junto con <code>rel="noopener noreferrer"</code>.</p>
+                </div>
+            </details>
+            <details class="faq-accordion">
+                <summary>¿Cómo decidirías si una imagen necesita texto alternativo?</summary>
+                <div class="accordion-content">
+                    <p>Evaluaría la función de la imagen en su contexto. Si transmite información necesaria, escribiría un <code>alt</code> breve que comunique esa información; si es puramente decorativa o redundante, usaría <code>alt=""</code> para que no añada ruido a la lectura asistida.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="html-css-resources-title">
+        <h2 id="html-css-resources-title">10. Documentación y herramientas recomendadas</h2>
+        <p>Utiliza estas fuentes para contrastar compatibilidad, sintaxis y comportamiento de las tecnologías. MDN es una referencia práctica de aprendizaje; los estándares publicados por WHATWG y W3C sirven para profundizar en la especificación.</p>
+        <ul class="resource-list">
+            <li>
+                <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" rel="noopener noreferrer">MDN · HTML</a>
+                <span>Elementos, atributos, formularios y semántica.</span>
+            </li>
+            <li>
+                <a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" rel="noopener noreferrer">MDN · CSS</a>
+                <span>Selectores, cascada, layout, responsive design y propiedades.</span>
+            </li>
+            <li>
+                <a href="https://developer.mozilla.org/es/docs/Learn_web_development" target="_blank" rel="noopener noreferrer">MDN · Learn Web Development</a>
+                <span>Ruta estructurada para practicar desarrollo web.</span>
+            </li>
+            <li>
+                <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer">WHATWG · HTML Living Standard</a>
+                <span>Especificación moderna de HTML.</span>
+            </li>
+            <li>
+                <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">W3C · WCAG 2.2</a>
+                <span>Criterios de accesibilidad para contenido web.</span>
+            </li>
+            <li>
+                <a href="https://web.dev/learn/css/" target="_blank" rel="noopener noreferrer">web.dev · Learn CSS</a>
+                <span>Guías prácticas para aprender CSS moderno.</span>
+            </li>
+            <li>
+                <a href="https://developer.chrome.com/docs/devtools/" target="_blank" rel="noopener noreferrer">Chrome DevTools</a>
+                <span>Inspección del DOM, estilos, red, consola y rendimiento.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="content-section related-section">
+        <h2>Continuar la ruta Full Stack</h2>
+        <div class="link-list">
+            <a href="#view-fullstack" data-page="fullstack">← Visión general de Full Stack</a>
+            <a href="#view-javascript" data-page="javascript">JavaScript y TypeScript →</a>
+            <a href="#view-frontend" data-page="frontend">Frontend y React →</a>
+            <a href="#view-apis" data-page="apis">APIs y arquitectura web →</a>
+        </div>
+    </section>
+</section>
 
             <!-- JavaScript -->
             <section class="page-view" id="view-javascript" data-view="javascript"
