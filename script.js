@@ -97,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function updateDocumentTitle(view, pageKey) {
         if (pageKey === SEARCH_PAGE) {
-            document.title = lastSearchQuery
-                ? `Búsqueda: ${lastSearchQuery} | ${BASE_TITLE}`
-                : `Búsqueda | ${BASE_TITLE}`;
+            document.title = lastSearchQuery ?
+                `Búsqueda: ${lastSearchQuery} | ${BASE_TITLE}` :
+                `Búsqueda | ${BASE_TITLE}`;
 
             return;
         }
@@ -107,9 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const heading = view?.querySelector('h1');
         const headingText = heading?.textContent?.trim();
 
-        document.title = headingText
-            ? `${headingText} | ${BASE_TITLE}`
-            : BASE_TITLE;
+        document.title = headingText ?
+            `${headingText} | ${BASE_TITLE}` :
+            BASE_TITLE;
     }
 
     // =========================================================
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showPage(pageKey, options = {}) {
         const {
             updateUrl = true,
-            scrollToTop = true
+                scrollToTop = true
         } = options;
 
         const requestedView = getView(pageKey);
@@ -247,13 +247,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Actualiza la URL sin recargar la página.
         if (updateUrl) {
-            const nextHash = resolvedPage === HOME_PAGE
-                ? '#view-home'
-                : `#view-${resolvedPage}`;
+            const nextHash = resolvedPage === HOME_PAGE ?
+                '#view-home' :
+                `#view-${resolvedPage}`;
 
             if (window.location.hash !== nextHash) {
-                window.history.pushState(
-                    { page: resolvedPage },
+                window.history.pushState({
+                        page: resolvedPage
+                    },
                     '',
                     nextHash
                 );
@@ -336,14 +337,14 @@ document.addEventListener('DOMContentLoaded', () => {
             .split(/\s+/)
             .find((term) => term.length > 1) || normalizedQuery;
 
-        const matchIndex = firstTerm
-            ? normalizedBody.indexOf(firstTerm)
-            : -1;
+        const matchIndex = firstTerm ?
+            normalizedBody.indexOf(firstTerm) :
+            -1;
 
         if (matchIndex < 0) {
-            return allText.length > 180
-                ? `${allText.slice(0, 177)}…`
-                : allText;
+            return allText.length > 180 ?
+                `${allText.slice(0, 177)}…` :
+                allText;
         }
 
         const start = Math.max(0, matchIndex - 65);
@@ -378,8 +379,8 @@ document.addEventListener('DOMContentLoaded', () => {
             Array.from(
                 view.querySelectorAll('h2, h3, h4, summary')
             )
-                .map((node) => node.textContent || '')
-                .join(' ')
+            .map((node) => node.textContent || '')
+            .join(' ')
         );
 
         const content = normalizeText(view.textContent || '');
@@ -466,15 +467,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const title = document.createElement('h1');
         title.id = 'search-results-title';
-        title.textContent = query
-            ? `Resultados para “${query}”`
-            : 'Buscar en la guía';
+        title.textContent = query ?
+            `Resultados para “${query}”` :
+            'Buscar en la guía';
 
         const description = document.createElement('p');
         description.className = 'page-description';
-        description.textContent = query
-            ? 'Resultados encontrados en secciones, conceptos, comandos y preguntas de la guía.'
-            : 'Escribe un término, servicio, comando o pregunta en el buscador superior.';
+        description.textContent = query ?
+            'Resultados encontrados en secciones, conceptos, comandos y preguntas de la guía.' :
+            'Escribe un término, servicio, comando o pregunta en el buscador superior.';
 
         header.append(eyebrow, title, description);
         section.appendChild(header);
@@ -489,16 +490,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .map((view) => ({
                 view,
                 key: view.dataset.view,
-                title:
-                    view.querySelector('h1')?.textContent?.trim() ||
+                title: view.querySelector('h1')?.textContent?.trim() ||
                     view.dataset.view,
                 score: scoreView(view, query)
             }))
             .filter((result) => result.score > 0)
             .sort(
                 (a, b) =>
-                    b.score - a.score ||
-                    a.title.localeCompare(b.title, 'es')
+                b.score - a.score ||
+                a.title.localeCompare(b.title, 'es')
             )
             .slice(0, 30);
 
@@ -506,9 +506,9 @@ document.addEventListener('DOMContentLoaded', () => {
         summary.className = 'search-result-count';
         summary.setAttribute('aria-live', 'polite');
 
-        summary.textContent = candidates.length === 1
-            ? 'Se encontró 1 sección relevante.'
-            : `Se encontraron ${candidates.length} secciones relevantes.`;
+        summary.textContent = candidates.length === 1 ?
+            'Se encontró 1 sección relevante.' :
+            `Se encontraron ${candidates.length} secciones relevantes.`;
 
         section.appendChild(summary);
 
@@ -535,7 +535,12 @@ document.addEventListener('DOMContentLoaded', () => {
         list.className = 'search-results-list';
         list.setAttribute('aria-label', 'Secciones encontradas');
 
-        candidates.forEach(({ view, key, title: pageTitle, score }) => {
+        candidates.forEach(({
+            view,
+            key,
+            title: pageTitle,
+            score
+        }) => {
             const article = document.createElement('article');
             article.className = 'search-result-card';
 
@@ -572,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function performSearch(query, options = {}) {
         const {
             updateUrl = true,
-            scrollToTop = true
+                scrollToTop = true
         } = options;
 
         lastSearchQuery = String(query ?? '').trim();
@@ -593,8 +598,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `#search=${encodeURIComponent(lastSearchQuery)}`;
 
             if (window.location.hash !== nextHash) {
-                window.history.pushState(
-                    {
+                window.history.pushState({
                         page: SEARCH_PAGE,
                         query: lastSearchQuery
                     },
@@ -663,9 +667,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Navegación normal entre vistas.
-        const pageKey = decodedHash.startsWith('view-')
-            ? decodedHash.slice('view-'.length)
-            : null;
+        const pageKey = decodedHash.startsWith('view-') ?
+            decodedHash.slice('view-'.length) :
+            null;
 
         if (pageKey && getView(pageKey)) {
             showPage(pageKey, {
@@ -777,9 +781,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             menuToggle.setAttribute(
                 'aria-label',
-                isOpen
-                    ? 'Cerrar menú de navegación'
-                    : 'Abrir menú de navegación'
+                isOpen ?
+                'Cerrar menú de navegación' :
+                'Abrir menú de navegación'
             );
         });
 
@@ -914,8 +918,8 @@ document.addEventListener('DOMContentLoaded', () => {
         main.querySelectorAll('a[target="_blank"]').forEach((link) => {
             const relTokens = new Set(
                 (link.getAttribute('rel') || '')
-                    .split(/\s+/)
-                    .filter(Boolean)
+                .split(/\s+/)
+                .filter(Boolean)
             );
 
             relTokens.add('noopener');
